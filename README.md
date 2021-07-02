@@ -54,5 +54,3 @@ In the addition to the optional parameters given above, the following may be pro
 ,```-n```: Number of qubits. Default is 3.
 
 ```-k```: Set of k values (type by leaving space). Default is 3 5 7. Number of entries should be equal to number of qubits.
-
-"# MCQFA" 
