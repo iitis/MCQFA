@@ -54,3 +54,29 @@ In the addition to the optional parameters given above, the following may be pro
 ,```-n```: Number of qubits. Default is 3.
 
 ```-k```: Set of k values (type by leaving space). Default is 3 5 7. Number of entries should be equal to number of qubits.
+
+### Fidelity calculation
+
+Run the following command to calculate fidelities of the states prodecued in the noisy and noiseless experiements.
+
+```
+python fidelity.py
+```
+
+The above command runs optimized MCQFA both using the noise model from IBM Belem backend and using the simulator using the default values indicated in the manuscripted. The fidelities are saved as pickle files inside data folder.
+
+The following optional parameters may be provided:
+
+```-p```: p value. Default is 11.
+
+```-n```: Number of qubits. Default is 3.
+
+```-backend```: IBMQ backend to be used. Default is belem.
+
+```-length```: Word length until which the simulations will be run. Default is 2 times the word length.
+
+```-k```: Set of k values (type by leaving space). Default is 3 5 7. Number of entries should be equal to number of qubits.
+
+```-shots```: Number of shots. Default is 10000.
+
+```-plot```: If this option is seleced, plot is generated.
