@@ -26,9 +26,9 @@ def optimized_noise_density(experiment, machine, p, word_length, k, n, shots):
     return d
 
 
-def calc_densities(p, word_length, k, n, shots):
-    density_z = optimized_noise_density("rz", "belem", p, word_length, k, n, shots)
-    density_y = optimized_noise_density("ry", "belem", p, word_length, k, n, shots)
+def calc_densities(p, word_length, k, n, shots, backend):
+    density_z = optimized_noise_density("rz", backend, p, word_length, k, n, shots)
+    density_y = optimized_noise_density("ry", backend, p, word_length, k, n, shots)
     ideal_z = optimized_noise_density("rz", "simulator", p, word_length, k, n, shots)
     ideal_y = optimized_noise_density("ry", "simulator", p, word_length, k, n, shots)
     return density_z, density_y, ideal_z, ideal_y
@@ -48,6 +48,12 @@ if __name__ == "__main__":
     parser.add_argument("-p", type=int, default=11, help="p value. Default is 11.")
     parser.add_argument(
         "-n", type=int, default=3, help="Number of qubits. Default is 3."
+    )
+    parser.add_argument(
+        "-backend",
+        type=str,
+        default="belem",
+        help="IBMQ backend to be used. Default is belem.",
     )
     parser.add_argument(
         "-length",
@@ -77,7 +83,7 @@ if __name__ == "__main__":
     if args.length == -1:
         args.length = args.p * 2
 
-    density_z, density_y, ideal_z, ideal_y = calc_densities(args.p, args.length, args.k, args.n, args.shots)
+    density_z, density_y, ideal_z, ideal_y = calc_densities(args.p, args.length, args.k, args.n, args.shots, args.backend)
 
     f_z_avg = calc_fidelity(density_z, ideal_z)
     f_y_avg = calc_fidelity(density_y, ideal_y)
