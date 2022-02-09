@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/382348959.svg)](https://zenodo.org/badge/latestdoi/382348959)
+
 # State-efficient QFA algorithm for quantum computers
 
 Responsible person: Özlem Salehi (osalehi[at]iitis.pl).
